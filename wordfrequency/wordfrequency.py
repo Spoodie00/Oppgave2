@@ -16,7 +16,8 @@ def read_file(file_name):
     tilbake en liste av tekststrenger som representerer linjene i filen.
     """
     # Tips: kanksje "open"-funksjonen kunne være nyttig her: https://docs.python.org/3/library/functions.html#open
-    return NotImplemented  # TODO: Du må erstatte denne linjen
+    tekst = open("C:\ING301\Oppgave2/tests/voluspaa.txt", encoding="utf-8")
+    return tekst.readlines()
 
 
 def lines_to_words(lines):
@@ -34,7 +35,15 @@ def lines_to_words(lines):
     # Tips: se på "split()"-funksjonen https://docs.python.org/3/library/stdtypes.html#str.split
     # i tillegg kan "strip()": https://docs.python.org/3/library/stdtypes.html#str.strip
     # og "lower()": https://docs.python.org/3/library/stdtypes.html#str.lower være nyttig
-    return NotImplemented  # TODO: Du må erstatte denne linjen
+
+    output = []
+    for line in lines:
+        text = ((line.lower()).split())
+        for word in text:
+            output1=word.strip(" ?.;,!")
+            output.append(output1)
+
+    return output
 
 
 def compute_frequency(words):

@@ -40,9 +40,10 @@ def lines_to_words(lines):
     for line in lines:
         text = ((line.lower()).split())
         for word in text:
-            output1=word.strip(" ?.;,!")
+            output1=word.strip(" ?.;,!:-")
             output.append(output1)
 
+    print(output)
     return output
 
 
@@ -54,7 +55,16 @@ def compute_frequency(words):
 
     F. eks. Inn ["hun", "hen", "han", "hen"], Ut: {"hen": 2, "hun": 1, "han": 1}
     """
-    return NotImplemented  # TODO: Du må erstatte denne linjen
+
+    dict1 = {}
+
+    for word in words:
+        try:
+            dict1[word] += 1
+        except KeyError:
+            dict1[word] = 1
+
+    return dict1
 
 
 FILL_WORDS = ['og', 'dei', 'i', 'eg', 'som', 'det', 'han', 'til', 'skal', 'på', 'for', 'då', 'ikkje', 'var', 'vera']
@@ -68,7 +78,14 @@ def remove_filler_words(frequency_table):
     Målet med denne funksjonen er at den skal få en frekvenstabll som input og så fjerne alle fyll-ord
     som finnes i FILL_WORDS.
     """
-    return NotImplemented  # TODO: Du må erstatte denne linjen
+
+    for word in FILL_WORDS:
+        try:
+            frequency_table.pop(word)
+        except KeyError:
+            continue
+
+    return frequency_table
 
 
 def largest_pair(par_1, par_2):
